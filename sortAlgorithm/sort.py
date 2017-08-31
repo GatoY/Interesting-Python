@@ -12,7 +12,7 @@ def insertionsort(s):
 	    j=j-1
 	s[j+1]=a
     endinsert=time.clock()
-    print '花的时间为 '+str(endinsert-startinsert)
+    print '花的时间为 '+str(endinsert-startinsert)+' s'
     return s
 
 # gap=2^k-1, running time: n^1.5
@@ -29,6 +29,24 @@ def shellsort(s):
 	    s[j+gap]=temp
 	gap=(gap+1)/2-1
     endshell=time.clock()
-    print '花的时间为 '+str(endshell-startshell)    
+    print '花的时间为 '+str(endshell-startshell)+' s'    
+    return s
+
+# Lomuto partitioning sort.
+def partitionsort(s):
+    startpartition=time.clock()
+    p=s[0]
+    x=0
+    for i in range(1,len(s)):
+	if s[i]<p:
+	    x=x+1
+    	    temp=s[i]
+	    s[i]=s[x]
+	    s[x]=temp
+    temp=s[0]
+    s[0]=s[x]
+    s[x]=temp
+    endpartition=time.clock()
+    print '花的时间为 '+str(endpartition-startpartition)+' s'
     return s
      
