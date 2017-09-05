@@ -49,4 +49,31 @@ def partitionsort(s):
     endpartition=time.clock()
     print '花的时间为 '+str(endpartition-startpartition)+' s'
     return s
+
+def hoarepartition(s,lo,hi):
+    p=s[lo]
+    i=lo
+    j=hi
+    while(i<j):
+	while (i<hi and s[i]<=p):
+	    i=i+1
+    	while (j>=lo and s[j]>=p):
+	    j=j-1
+	temp=s[i]
+	s[i]=s[j]
+	s[j]=temp
+    temp=s[i]
+    s[i]=s[j]
+    s[j]=temp
+    s[lo]=s[j]
+    s[j]=p
+    return j
      
+def quicksortf(s,lo,hi):
+    if lo<hi:
+	p=hoarepartition(s,lo,hi)
+	quicksortf(s,lo,p-1)
+	quicksortf(s,p+1,hi)
+ 
+
+
