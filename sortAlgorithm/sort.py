@@ -68,12 +68,39 @@ def hoarepartition(s,lo,hi):
     s[lo]=s[j]
     s[j]=p
     return j
+
+def quicksort(s):
+    lo=0
+    hi=len(s)-1
+    return quicksortf(s,lo,hi)
      
 def quicksortf(s,lo,hi):
     if lo<hi:
 	p=hoarepartition(s,lo,hi)
 	quicksortf(s,lo,p-1)
 	quicksortf(s,p+1,hi)
- 
 
+def quick_sort_standard(array,low,high):
+    ''' realize from book "data struct" of author 严蔚敏
+    '''
+    if low < high:
+        key_index = partion(array,low,high)
+        quick_sort_standard(array,low,key_index)
+        quick_sort_standard(array,key_index+1,high)
+
+def partion(array,low,high):
+    key = array[low]
+    while low < high:
+        while low < high and array[high] >= key:
+            high -= 1
+        if low < high:
+            array[low] = array[high]
+
+        while low < high and array[low] < key:
+            low += 1
+        if low < high:
+            array[high] = array[low]
+
+    array[low] = key
+    return low
 
