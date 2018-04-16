@@ -3,6 +3,14 @@ import pyautogui as pag
 import Tkinter as tk
 from PIL import Image
 import random
+import time
+import argparse
+parser =argparse.ArgumentParser()
+parser.add_argument('-r','--resultfile')
+args=parser.parse_args()
+
+resultfile=args.resultfile
+
 root=tk.Tk()
 screen_width=root.winfo_screenwidth()
 screen_height=root.winfo_screenheight()
@@ -29,5 +37,5 @@ try:
                 window.putpixel((x,y),(r,g,b))
 except  KeyboardInterrupt:
     window.resize((500,800))
-    window.save('window.png','PNG')
+    window.save(resultfile,'PNG')
     print 'save successfully....'
